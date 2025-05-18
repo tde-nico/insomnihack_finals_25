@@ -1,0 +1,442 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+:root {
+    --bg-color: #1a0505;
+    --text-color: #ff4d4d;
+    --accent-color: #ff8080;
+    --hover-color: #ff3333;
+    --shadow-color: rgba(255, 77, 77, 0.6);
+}
+
+/* Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+}
+
+body {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 24px;
+    text-align: center;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Intro Animation */
+.intro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 99999;
+    background-color: var(--bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fade-out ease-in 0.3s forwards;
+    animation-delay: 4.5s;
+}
+
+.logo {
+    position: relative;
+    opacity: 1;
+    animation: fade-out ease-in 1s forwards;
+    animation-delay: 3.3s;
+}
+
+.logo::after,
+.logo::before {
+    content: '';
+    position: absolute;
+    left: 21px;
+    height: 2px;
+    background-color: var(--text-color);
+    width: 0;
+    animation: grow ease-in 0.8s forwards;
+}
+
+.logo::after {
+    bottom: 21px;
+    animation-delay: 2s;
+}
+
+.logo::before {
+    top: 21px;
+    margin-left: 80%;
+    animation-delay: 1.5s;
+}
+
+.logo-text {
+    position: absolute;
+    top: 40px;
+    left: 8px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 20px;
+    letter-spacing: 4px;
+    z-index: 99999;
+    opacity: 0;
+    animation: fade-in ease-in 1s forwards;
+    animation-delay: 2s;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.logo-bg {
+    position: absolute;
+    width: 0;
+    top: 33px;
+    left: 20px;
+    height: 40px;
+    background-color: var(--bg-color);
+    z-index: 9999;
+    animation: grow linear 0.6s forwards;
+    animation-delay: 1.5s;
+}
+
+.logo-circles {
+    display: block;
+    width: 200px;
+    height: 100px;
+    border: 2px solid var(--text-color);
+    border-radius: 100%;
+    position: relative;
+}
+
+.logo-circles::before,
+.logo-circles::after {
+    content: '';
+    width: 0;
+    height: 100%;
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    border: 2px solid var(--text-color);
+    border-radius: 100%;
+    opacity: 0;
+}
+
+.logo-circles::before {
+    animation: scale72 linear 1s forwards;
+    animation-delay: 1s;
+}
+
+.logo-circles::after {
+    animation: scale33 linear 1s forwards;
+    animation-delay: 1.8s;
+}
+
+/* Header Styles */
+header {
+    position: fixed;
+    background-color: var(--bg-color);
+    border-bottom: 2px solid var(--text-color);
+    width: 100%;
+    top: 0;
+    z-index: 99;
+    padding: 0;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 40px);
+    max-width: 1400px;
+    margin: 20px auto;
+    padding: 8px 20px;
+    border: 2px solid var(--text-color);
+}
+
+.header-content div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-percent {
+    -webkit-text-stroke: 1px var(--text-color);
+    font-size: 28px;
+}
+
+.lumen {
+    font-family: 'Russo One', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+/* Grid Layout */
+#grid {
+    width: 100%;
+    display: grid;
+    grid-auto-rows: 80px;
+    margin-top: 100px; /* Match header height */
+    margin-bottom: 200px; /* Match footer height */
+    position: relative;
+    z-index: 1;
+    padding: 0 20px;
+    box-sizing: border-box;
+    height: calc(100vh - 300px); /* Viewport height minus header and footer */
+}
+
+#grid > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 100;
+    transition: all 0.2s ease-out, opacity 0.2s ease-in-out;
+    position: relative;
+}
+
+
+/* Footer Styles */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--bg-color);
+    z-index: 100;
+    border-top: 2px solid var(--text-color);
+}
+
+.footer-container {
+    width: calc(100% - 40px);
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.number {
+    border: 2px solid var(--text-color);
+    padding: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.number:hover {
+    transform: scale(1.1);
+    background-color: var(--text-color);
+    color: var(--bg-color);
+}
+
+.progress-bar {
+    border: 2px solid var(--text-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-color: var(--text-color);
+    opacity: 0.3;
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+/* Completion Flag */
+.completion-flag {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 100%;
+    color: var(--text-color);
+    font-family: 'Russo One', sans-serif;
+    font-size: 24px;
+    opacity: 0;
+    animation: flag-reveal 1s ease-out forwards,
+               flag-glow 2s ease-in-out infinite alternate;
+    text-shadow: 0 0 10px var(--text-color);
+}
+
+/* Hover Effects */
+.hover-effect {
+    transform: scale(2.6) !important;
+    color: var(--text-color) !important;
+    text-shadow: 0 0 10px var(--shadow-color) !important;
+    z-index: 10 !important;
+}
+
+.hover-effect-medium {
+    transform: scale(2) !important;
+    color: var(--hover-color) !important;
+    text-shadow: 0 0 5px var(--shadow-color) !important;
+    z-index: 9 !important;
+}
+
+.hover-effect-light {
+    transform: scale(1.5) !important;
+    color: var(--hover-color) !important;
+    text-shadow: 0 0 2px var(--shadow-color) !important;
+    z-index: 8 !important;
+}
+
+/* Completion Overlay */
+.completion-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-color);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fade-in ease-in 0.5s forwards;
+}
+
+.completion-logo {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+/* Removed the ::before and ::after pseudo-elements from completion-logo */
+
+.completion-text {
+    font-family: 'Russo One', sans-serif;
+    font-size: 32px;
+    letter-spacing: 4px;
+    color: var(--text-color);
+    opacity: 0;
+    animation: fade-in ease-in 1s forwards;
+    animation-delay: 0.8s;
+}
+
+.completion-flag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 28px;
+    color: var(--text-color);
+    opacity: 0;
+    animation: fade-in ease-in 1s forwards,
+               flag-glow 2s ease-in-out infinite alternate;
+    animation-delay: 1.2s;
+}
+
+.completion-flag-container {
+    position: relative;
+    padding: 20px;
+}
+
+
+.completion-flag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 28px;
+    color: var(--text-color);
+    opacity: 0;
+    animation: fade-in ease-in 1s forwards,
+               flag-glow 2s ease-in-out infinite alternate;
+    animation-delay: 1.2s;
+}
+
+@keyframes grow-x {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+}
+
+@keyframes flag-glow {
+    from {
+        text-shadow: 0 0 5px var(--text-color),
+                     0 0 10px var(--text-color),
+                     0 0 15px var(--text-color);
+    }
+    to {
+        text-shadow: 0 0 10px var(--text-color),
+                     0 0 20px var(--text-color),
+                     0 0 30px var(--text-color);
+    }
+}
+
+
+/* Animations */
+.b-20 { animation: float-bottom-20 6s ease-in-out infinite; }
+.l-20 { animation: float-left-20 6s ease-in-out infinite; }
+.d-1 { animation-delay: 1s; }
+.d-1_5 { animation-delay: 1.5s; }
+.du-2 { animation-duration: 3s; }
+.du-8 { animation-duration: 4s; }
+
+/* Animation Keyframes */
+@keyframes float-bottom-20 {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+}
+
+@keyframes float-left-20 {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(10px); }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; visibility: hidden; }
+}
+
+@keyframes grow {
+    from { width: 0; margin-left: 80%; }
+    to { width: 80%; margin-left: 0; }
+}
+
+@keyframes scale33 {
+    from { opacity: 1; width: 0; left: 50%; }
+    to { width: 33%; left: 33%; opacity: 1; }
+}
+
+@keyframes scale72 {
+    from { opacity: 1; width: 0; left: 50%; }
+    to { width: 72%; left: 14%; opacity: 1; }
+}
+
+@keyframes flag-reveal {
+    0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+    50% { opacity: 1; transform: translateX(-50%) translateY(-10px); }
+    75% { transform: translateX(-50%) translateY(5px); }
+    100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+@keyframes flag-glow {
+    from {
+        text-shadow: 0 0 5px var(--text-color),
+                     0 0 10px var(--text-color),
+                     0 0 15px var(--text-color);
+    }
+    to {
+        text-shadow: 0 0 10px var(--text-color),
+                     0 0 20px var(--text-color),
+                     0 0 30px var(--text-color);
+    }
+}
+
+/* Code display in footer */
+.code {
+    text-align: center;
+    padding: 10px 0;
+    font-size: 16px;
+    color: var(--text-color);
+}
+

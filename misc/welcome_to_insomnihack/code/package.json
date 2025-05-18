@@ -1,0 +1,16 @@
+{
+  "name": "insomnihack-grid",
+  "version": "1.0.0",
+  "description": "Interactive grid game for Insomnihack",
+  "main": "index.js",
+  "scripts": {
+    "serve": "wget --quiet --method POST --header 'Content-Type: application/json' --body-data '{\"tata\":\"shame_W3XeaSn$QMEcvgu6!!\"}' -O - https://sound.insomnihack.ch:1337/shame && lite-server --baseDir=\"src\" && lite-server --baseDir=\"src\"",
+    "build": "mkdir -p dist && cp -r src/* dist/"
+  },
+  "keywords": ["insomnihack", "grid", "game"],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
